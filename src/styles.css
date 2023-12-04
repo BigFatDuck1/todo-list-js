@@ -1,5 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&family=Roboto+Slab&display=swap');
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Cabin", sans-serif;
+}
 
+/* HTML Frame */
 .container {
-    color: red;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+.main {
+    display: grid;
+    grid-template-columns: 1fr 4fr;    
 }
