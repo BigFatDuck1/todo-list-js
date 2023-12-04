@@ -1,1 +1,1 @@
-document.querySelector(".container").appendChild(document.createTextNode("Hello World"));
+(()=>{const e=document.createElement("div");e.textContent="Hello World",document.querySelector(".container").appendChild(e)})();
