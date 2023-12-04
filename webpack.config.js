@@ -11,5 +11,6 @@ module.exports = {
             filename: "./index.html",
             inject: 'body',
         })
-    ]
+    ],
+    mode: "development", //Change to production when finished
 }
