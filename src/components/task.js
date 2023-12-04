@@ -4,6 +4,10 @@ class TaskHandler {
         this.tasks = [];
     }
 
+    returnTaskArray() {
+        return this.tasks;
+    }
+
     addTask(task) {
         this.tasks.push(task);
     }
@@ -18,8 +22,12 @@ class TaskHandler {
         })
     }
 
-    removeTask(id) {
+    removeTaskById(id) {
         this.tasks.splice(id, 1);
+    }
+
+    removeTask(task) {
+        this.tasks.splice(this.tasks.indexOf(task), 1);
     }
 }
 
@@ -29,11 +37,11 @@ class Task {
         this.description = description;
         this.date = date;
         this.priority = priority;
-        this.id;
+        this.tags = [];
     }
 
-    setId(id) {
-        this.id = id; //Set this when creating a new Task
+    setCategory(tag) {
+        this.tags.push(tag);
     }
 }
 

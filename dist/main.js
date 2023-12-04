@@ -110,13 +110,33 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 
 /***/ }),
 
+/***/ "./src/DOM/tasksPanel.js":
+/*!*******************************!*\
+  !*** ./src/DOM/tasksPanel.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   displayTasks: () => (/* binding */ displayTasks)\n/* harmony export */ });\n\r\nfunction displayTasks(task_array) {\r\n\r\n    let task_div_array = [];\r\n\r\n    task_array.forEach((task) => {\r\n\r\n        //Create a div for each task\r\n        let task_div = document.createElement('div');\r\n        task_div.classList.add('task_container');\r\n\r\n        //Fill in details\r\n        let task_name = document.createElement('h3');\r\n        task_name.classList.add('name');\r\n        task_name.textContent = task.name;\r\n\r\n        let task_description = document.createElement('p');\r\n        task_description.classList.add('description');\r\n        task_description.textContent = task.description;\r\n\r\n        let task_date = document.createElement('p');\r\n        task_date.classList.add('date');\r\n        task_date.textContent = task.date;\r\n\r\n        let task_priority = document.createElement('p');\r\n        task_priority.classList.add('priority');\r\n        task_priority.textContent = task.priority;\r\n\r\n        let task_tags = document.createElement('p');\r\n        task_tags.classList.add('tags');\r\n        task.tags.forEach((tag) => {\r\n            task_tags.textContent += tag + \" \";\r\n        })\r\n\r\n        //Append all details into the div\r\n        let task_info = [task_name, task_description, task_date, task_priority, task_tags];\r\n        task_info.forEach((element) => {\r\n            task_div.appendChild(element);\r\n        })\r\n\r\n        //Append div into array\r\n        task_div_array.push(task_div);\r\n\r\n    })\r\n\r\n    return task_div_array;\r\n    \r\n}\r\n\r\n\r\n\n\n//# sourceURL=webpack://todo-list/./src/DOM/tasksPanel.js?");
+
+/***/ }),
+
+/***/ "./src/components/task.js":
+/*!********************************!*\
+  !*** ./src/components/task.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   Task: () => (/* binding */ Task),\n/* harmony export */   TaskHandler: () => (/* binding */ TaskHandler)\n/* harmony export */ });\n\r\nclass TaskHandler {\r\n    constructor() {\r\n        this.tasks = [];\r\n    }\r\n\r\n    returnTaskArray() {\r\n        return this.tasks;\r\n    }\r\n\r\n    addTask(task) {\r\n        this.tasks.push(task);\r\n    }\r\n\r\n    taskSize() {\r\n        return this.tasks.length;\r\n    }\r\n\r\n    findTask(name) {\r\n        let results_array = this.tasks.filter((element) => {\r\n            return element.name == name;\r\n        })\r\n    }\r\n\r\n    removeTaskById(id) {\r\n        this.tasks.splice(id, 1);\r\n    }\r\n\r\n    removeTask(task) {\r\n        this.tasks.splice(this.tasks.indexOf(task), 1);\r\n    }\r\n}\r\n\r\nclass Task {\r\n    constructor(name, description, date, priority) {\r\n        this.name = name;\r\n        this.description = description;\r\n        this.date = date;\r\n        this.priority = priority;\r\n        this.tags = [];\r\n    }\r\n\r\n    setCategory(tag) {\r\n        this.tags.push(tag);\r\n    }\r\n}\r\n\r\n\n\n//# sourceURL=webpack://todo-list/./src/components/task.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles.css */ \"./src/styles.css\");\n\r\n\r\n\r\n\n\n//# sourceURL=webpack://todo-list/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles.css */ \"./src/styles.css\");\n/* harmony import */ var _components_task_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/task.js */ \"./src/components/task.js\");\n/* harmony import */ var _DOM_tasksPanel_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./DOM/tasksPanel.js */ \"./src/DOM/tasksPanel.js\");\n\r\n\r\n\r\n\r\n\r\nconst Task1 = new _components_task_js__WEBPACK_IMPORTED_MODULE_1__.Task(\"Task 1\", \"This is a task\", \"2021-10-10\", \"High\");\r\nconst Task2 = new _components_task_js__WEBPACK_IMPORTED_MODULE_1__.Task(\"Task 2\", \"This is task 2\", \"2023-9-12\", \"High\");\r\nconst Task3 = new _components_task_js__WEBPACK_IMPORTED_MODULE_1__.Task(\"Task 3\", \"This is task 3\", \"2021-10-10\", \"High\");\r\nconst Task4 = new _components_task_js__WEBPACK_IMPORTED_MODULE_1__.Task(\"Task 4\", \"This is task 4\", \"2021-10-10\", \"High\");\r\n\r\nconst allTasks = new _components_task_js__WEBPACK_IMPORTED_MODULE_1__.TaskHandler();\r\n\r\nallTasks.addTask(Task1);\r\nallTasks.addTask(Task2);\r\nallTasks.addTask(Task3);\r\nallTasks.addTask(Task4);\r\n\r\nconsole.log(allTasks);\r\n\r\nallTasks.removeTask(Task2);\r\n\r\n\r\n\r\nconsole.log(allTasks);\r\n\r\n//DOM\r\nlet task_list = _DOM_tasksPanel_js__WEBPACK_IMPORTED_MODULE_2__.displayTasks(allTasks.tasks);\r\nconsole.log(task_list);\r\ntask_list.forEach((task) => {\r\n    document.querySelector(\".content\").appendChild(task);\r\n})\r\n// document.querySelector(\".content\").appendChild(task_list);\n\n//# sourceURL=webpack://todo-list/./src/index.js?");
 
 /***/ })
 
