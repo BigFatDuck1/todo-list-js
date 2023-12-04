@@ -12,8 +12,22 @@ module.exports = {
             inject: 'body',
         })
     ],
+    module: {
+        rules: [
+          {
+            test: /\.css$/i,
+            use: ['style-loader', 'css-loader'],
+          },
+          {
+            test: /\.(png|svg|jpg|jpeg|gif)$/i,
+            type: 'asset/resource',
+          },
+        ],
+      },
     output: {
         clean: true,
     },
     mode: "development", //Change to production when finished
 }
+
+//https://www.codeinwp.com/blog/webpack-tutorial-for-beginners/#what-is-webpack

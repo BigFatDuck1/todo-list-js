@@ -1,4 +1,5 @@
 
+import './styles.css';
 
 const startUp = () => {
     const test = document.createElement('div');
