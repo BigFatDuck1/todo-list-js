@@ -12,5 +12,8 @@ module.exports = {
             inject: 'body',
         })
     ],
+    output: {
+        clean: true,
+    },
     mode: "development", //Change to production when finished
 }
