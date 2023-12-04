@@ -3,6 +3,13 @@ const path = require('path');
 
 module.exports = {
     plugins: [
-        new HtmlWebpackPlugin()
+        new HtmlWebpackPlugin({
+            hash: true,
+            title: "Todo list",
+            header: "Todo list",
+            template: "./src/index.html",
+            filename: "./index.html",
+            inject: 'body',
+        })
     ]
 }
