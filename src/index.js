@@ -1,7 +1,8 @@
 import './styles.css';
 
 import { TaskHandler, Task } from './components/task.js';
-import * as tasksPanel from './DOM/tasksPanel.js';
+import * as tasksDOM from './DOM/tasksDOM.js';
+import {modalOpen, keyModalOpen} from './DOM/modal.js';
 
 const Task1 = new Task("Task 1", "This is a task", "2021-10-10", "High");
 const Task2 = new Task("Task 2", "This is task 2", "2023-9-12", "High");
@@ -24,5 +25,15 @@ allTasks.removeTask(Task2);
 console.log(allTasks);
 
 //DOM
-let div_of_all_tasks = tasksPanel.displayTasks(allTasks.tasks);
+let div_of_all_tasks = tasksDOM.displayTasks(allTasks.tasks);
 document.querySelector(".content").appendChild(div_of_all_tasks);
+
+//Modal
+const add_task_button = document.querySelector(".add_button");
+const modal_window = document.querySelector("#add_task_modal");
+
+function modalFunctions() {
+    modalOpen(add_task_button, modal_window);
+    keyModalOpen(modal_window);
+}
+modalFunctions();

@@ -14,11 +14,23 @@
 }
 
 .header {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 3vw;
+    padding-right: 5vw;
+    padding-top: 0.3rem;
 }
 
 .main {
     display: grid;
     grid-template-columns: 1fr 4fr;    
+}
+
+/* Modal */
+dialog {
+    /* Centering elements */
+    margin: auto;
+    padding: auto;
+    /* Styling the modal box */
+    border: none;
 }
