@@ -13,4 +13,18 @@ function keyModalOpen(modal) {
     });
 }
 
-export {modalOpen, keyModalOpen};
+function closeOnOutsideClick(modal) {
+    modal.addEventListener("click", (event) => {
+        const dialogDimensions = modal.getBoundingClientRect()
+        if (
+          event.clientX < dialogDimensions.left ||
+          event.clientX > dialogDimensions.right ||
+          event.clientY < dialogDimensions.top ||
+          event.clientY > dialogDimensions.bottom
+        ) {
+          modal.close()
+        }
+      })
+}
+
+export {modalOpen, keyModalOpen, closeOnOutsideClick};

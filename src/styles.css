@@ -30,7 +30,16 @@
 dialog {
     /* Centering elements */
     margin: auto;
-    padding: auto;
     /* Styling the modal box */
     border: none;
+    /* Styling modal contents */
+}
+
+dialog > form {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
 }
