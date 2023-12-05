@@ -1,7 +1,7 @@
 
-class TaskHandler {
+class TaskHandler { //An array containing all of the tasks and associated methods to handle the "library"
     constructor() {
-        this.tasks = [];
+        this.tasks = []; //the array itself
     }
 
     returnTaskArray() {
@@ -31,7 +31,7 @@ class TaskHandler {
     }
 }
 
-class Task {
+class Task { //An individual task
     constructor(name, description, date, priority) {
         this.name = name;
         this.description = description;

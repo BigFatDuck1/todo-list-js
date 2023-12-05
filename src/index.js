@@ -24,9 +24,5 @@ allTasks.removeTask(Task2);
 console.log(allTasks);
 
 //DOM
-let task_list = tasksPanel.displayTasks(allTasks.tasks);
-console.log(task_list);
-task_list.forEach((task) => {
-    document.querySelector(".content").appendChild(task);
-})
-// document.querySelector(".content").appendChild(task_list);
+let div_of_all_tasks = tasksPanel.displayTasks(allTasks.tasks);
+document.querySelector(".content").appendChild(div_of_all_tasks);

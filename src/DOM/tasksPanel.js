@@ -43,7 +43,15 @@ function displayTasks(task_array) {
 
     })
 
-    return task_div_array;
+    const task_container = document.createElement('div');
+    task_container.classList.add("task_container");
+
+    task_div_array.forEach((element) => {
+        task_container.appendChild(element);
+    
+    })
+
+    return task_container;
     
 }
 
