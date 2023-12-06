@@ -33,10 +33,23 @@
     
     <dialog id="add_task_modal">
         <form action="" method="dialog">
-            <input type="text" name="task_name" id="task_name" placeholder="Task name">
-            <input type="text" name="task_description" id="task_description" placeholder="Task description">
-            <input type="date" name="task_due_date" id="task_due_date" placeholder="Task due date">
-            <button type="submit" value="Add task">Add task</button>
+            <input type="text" class="modal_field" name="task_name" id="task_name" placeholder="Task name" value="Delete me">
+            <input type="text" class="modal_field" name="task_description" id="task_description" placeholder="Task description" value="Delete me too">
+            <input type="date" class="modal_field" name="task_due_date" id="task_due_date" value="2023-12-06">
+            <div class="priority_radio">
+                <input class="modal_field" type="radio" id="UandI" name="priority" value="Urgent and Important" checked>
+                <label for="UandI">Urgent and Important</label>
+
+                <input class="modal_field" type="radio" id="UnotI" name="priority" value="Urgent, but not Important">
+                <label for="UnotI">Urgent, but not Important</label>
+
+                <input class="modal_field" type="radio" id="notUI" name="priority" value="Not Urgent but Important">
+                <label for="notUI">Not Urgent but Important</label>
+
+                <input class="modal_field" type="radio" id="nUnI" name="priority" value="Not Urgent, Not Important">
+                <label for="nUnI">Not Urgent, not Important</label>
+            </div>
+            <button type="submit" id="submit_button">Add task</button>
         </form>
     </dialog>
     

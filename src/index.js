@@ -2,7 +2,7 @@ import './styles.css';
 
 import { TaskHandler, Task } from './components/task.js';
 import * as tasksDOM from './DOM/tasksDOM.js';
-import {modalOpen, keyModalOpen, closeOnOutsideClick} from './DOM/modal.js';
+import {modalOpen, keyModalOpen, closeOnOutsideClick, submitForm, collectFieldsData, clearFields} from './DOM/modal.js';
 
 const Task1 = new Task("Task 1", "This is a task", "2021-10-10", "High");
 const Task2 = new Task("Task 2", "This is task 2", "2023-9-12", "High");
@@ -38,3 +38,18 @@ function modalFunctions() {
     closeOnOutsideClick(modal_window);
 }
 modalFunctions();
+
+//Modal submit
+const submit_button = document.querySelector("#submit_button");
+
+submit_button.addEventListener(("click"), () => {
+    let value_array = collectFieldsData(".modal_field");
+    console.log(value_array);
+
+})
+document.addEventListener("keydown", (event) => {
+    if (event.key == "Enter") {
+        let value_array = collectFieldsData(".modal_field");
+        console.log(value_array);
+    }
+})
