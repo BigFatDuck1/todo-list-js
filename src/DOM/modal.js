@@ -59,6 +59,9 @@ function collectFieldsData(class_name) {
             value_array.push(field.value);
         }
     })
+    
+    //Clears everything after pressing submit
+    clearFields(...fields);
 
     return value_array;
 }
