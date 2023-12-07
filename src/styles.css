@@ -43,3 +43,9 @@ dialog > form {
     align-items: center;
     gap: 1rem;
 }
+
+.priority_radio {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
