@@ -42,14 +42,19 @@ modalFunctions();
 //Modal submit
 const submit_button = document.querySelector("#submit_button");
 
-submit_button.addEventListener(("click"), () => {
+function submit() {
     let value_array = collectFieldsData(".modal_field");
-    console.log(value_array);
+    let new_task = new Task(...value_array);
+    allTasks.addTask(new_task);
+    console.log(allTasks);
+}
+
+submit_button.addEventListener(("click"), () => {
+    submit();
 
 })
 document.addEventListener("keydown", (event) => {
     if (event.key == "Enter") {
-        let value_array = collectFieldsData(".modal_field");
-        console.log(value_array);
+        submit();
     }
 })
