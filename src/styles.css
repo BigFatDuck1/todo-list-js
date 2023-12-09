@@ -37,7 +37,7 @@
 .task_container {
     display: grid;
     grid-template-areas: 
-    "name name name name . ."
+    "name name name name name name"
     "description description description description . ."
     "date date date date completed delete"
     "priority priority priority priority completed delete";
@@ -46,6 +46,7 @@
 
 .name {
     grid-area: name;
+    text-align: center;
 }
 
 .description {
