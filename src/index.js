@@ -2,7 +2,7 @@ import './styles.css';
 
 import { TaskHandler, Task } from './components/task.js';
 import * as tasksDOM from './DOM/tasksDOM.js';
-import {modalOpen, keyModalOpen, closeOnOutsideClick, submitForm, collectFieldsData, clearFields} from './DOM/modal.js';
+import {modalOpen, keyModalOpen, closeOnOutsideClick, collectFieldsData} from './DOM/modal.js';
 
 const Task1 = new Task("Task 1", "This is a task", "2021-10-10", "High");
 const Task2 = new Task("Task 2", "This is task 2", "2023-9-12", "High");
@@ -27,6 +27,9 @@ console.log(allTasks);
 //DOM
 let div_of_all_tasks = tasksDOM.displayTasks(allTasks.tasks);
 document.querySelector(".content").appendChild(div_of_all_tasks);
+
+//Tasks
+tasksDOM.deleteButtons(allTasks);
 
 //Modal
 const add_task_button = document.querySelector(".add_button");

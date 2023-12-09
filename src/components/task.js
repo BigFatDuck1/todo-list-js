@@ -17,9 +17,11 @@ class TaskHandler { //An array containing all of the tasks and associated method
     }
 
     findTask(name) {
-        let results_array = this.tasks.filter((element) => {
+        let results_array = this.tasks.find((element) => {
             return element.name == name;
         })
+
+        return results_array;
     }
 
     removeTaskById(id) {

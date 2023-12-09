@@ -8,6 +8,7 @@ function displayTasks(task_array) {
         //Create a div for each task
         let task_div = document.createElement('div');
         task_div.classList.add('task_container');
+        task_div.dataset.name = task.name;
 
         //Fill in details
         let task_name = document.createElement('h3');
@@ -67,5 +68,17 @@ function displayTasks(task_array) {
     
 }
 
+function deleteButtons(task_array_class) {
+    let all_delete_buttons = document.querySelectorAll(".delete_button");
 
-export { displayTasks };
+    all_delete_buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+            let selected_task = button.parentElement.dataset.name;
+            console.log(selected_task)
+            let result = task_array_class.findTask(selected_task);
+            console.log(result);
+        })
+    })
+}
+
+export { displayTasks, deleteButtons };
