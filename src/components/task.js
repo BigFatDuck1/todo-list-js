@@ -38,10 +38,19 @@ class Task { //An individual task
         this.date = date;
         this.priority = priority;
         this.tags = [];
+        this.complete = false;
     }
 
     setCategory(tag) {
         this.tags.push(tag);
+    }
+
+    setCompleted() {
+        this.complete = true;
+    }
+
+    setIncomplete() {
+        this.complete = false;
     }
 }
 

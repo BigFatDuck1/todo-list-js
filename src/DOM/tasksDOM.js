@@ -32,8 +32,20 @@ function displayTasks(task_array) {
             task_tags.textContent += tag + " ";
         })
 
+        let task_complete_button = document.createElement('button');
+        task_complete_button.classList.add('complete_button');
+        task_complete_button.textContent = "✔";
+
+        let task_delete_button = document.createElement('button');
+        task_delete_button.classList.add('delete_button');
+        task_delete_button.textContent = "X";
+
+        [task_complete_button, task_delete_button].forEach((button) => {
+            button.classList.add('task_buttons');
+        })
+
         //Append all details into the div
-        let task_info = [task_name, task_description, task_date, task_priority, task_tags];
+        let task_info = [task_name, task_description, task_date, task_priority, task_tags, task_complete_button, task_delete_button];
         task_info.forEach((element) => {
             task_div.appendChild(element);
         })
@@ -44,7 +56,7 @@ function displayTasks(task_array) {
     })
 
     const task_container = document.createElement('div');
-    task_container.classList.add("task_container");
+    task_container.classList.add("all_tasks_container");
 
     task_div_array.forEach((element) => {
         task_container.appendChild(element);
