@@ -75,12 +75,9 @@ function deleteButtons(task_array_class) {
         button.addEventListener("click", () => {
             let selected_task = button.parentElement.dataset.name;
             let task = task_array_class.findTask(selected_task);
-            console.log(task);
             task_array_class.removeTask(task);
-            console.log(task_array_class);
-            // console.log(task_array_class);
-            // console.log(task_array_class.tasks);
-            // displayTasks(task_array_class.tasks);
+            //Removes the div from the DOM
+            button.parentElement.remove();
         })
     })
 }
