@@ -74,6 +74,14 @@
     grid-area: delete;
 }
 
+/* Task complete */
+.task_finished > h3, .task_finished > .description {
+    text-decoration: line-through;
+}
+.task_finished > p {
+    opacity: 0.7;
+}
+
 /* Modal */
 dialog {
     /* Centering elements */

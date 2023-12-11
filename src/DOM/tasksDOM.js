@@ -81,4 +81,31 @@ function deleteButtons(task_array_class) {
     })
 }
 
-export { displayTasks, deleteButtons };
+function checkButtons(task_array_class) {
+    let all_check_buttons = document.querySelectorAll(".complete_button");
+
+    all_check_buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+            let selected_task = button.parentElement.dataset.name;
+            let parent_element = button.parentElement;
+            let result = task_array_class.findTask(selected_task);
+            if (result.complete == false) {
+                //Add class that modifies style of button
+                parent_element.classList.add("task_finished");
+                result.setCompleted();
+                result.tags.push("completed");
+            }
+            else if (result.complete == true) {
+                //Removes that class to mark that it is not complete
+                parent_element.classList.remove("task_finished");
+                result.setIncomplete();
+                result.tags.splice((() => {
+                    return result.tags.indexOf("completed");
+                }), 1);
+            }            
+            console.log(button.parentElement);
+        })
+    })
+}
+
+export { displayTasks, deleteButtons, checkButtons };

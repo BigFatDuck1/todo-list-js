@@ -30,6 +30,7 @@ document.querySelector(".content").appendChild(div_of_all_tasks);
 
 //Tasks
 tasksDOM.deleteButtons(allTasks);
+tasksDOM.checkButtons(allTasks);
 
 //Modal
 const add_task_button = document.querySelector(".add_button");
