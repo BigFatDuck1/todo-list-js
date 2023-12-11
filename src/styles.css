@@ -40,7 +40,8 @@
     "name name name name name name"
     "description description description description . ."
     "date date date date completed delete"
-    "priority priority priority priority completed delete";
+    "priority priority priority priority completed delete"
+    "tags tags tags tags tags tags";
     gap: 0.5rem;
 }
 
@@ -72,6 +73,10 @@
 
 .delete_button {
     grid-area: delete;
+}
+
+.tags {
+    grid-area: tags;
 }
 
 /* Task complete */
