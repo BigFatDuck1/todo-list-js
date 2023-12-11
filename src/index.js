@@ -16,13 +16,7 @@ allTasks.addTask(Task2);
 allTasks.addTask(Task3);
 allTasks.addTask(Task4);
 
-console.log(allTasks);
-
 allTasks.removeTask(Task2);
-
-
-
-console.log(allTasks);
 
 //DOM
 let div_of_all_tasks = tasksDOM.displayTasks(allTasks.tasks);

@@ -74,9 +74,13 @@ function deleteButtons(task_array_class) {
     all_delete_buttons.forEach((button) => {
         button.addEventListener("click", () => {
             let selected_task = button.parentElement.dataset.name;
-            console.log(selected_task)
-            let result = task_array_class.findTask(selected_task);
-            console.log(result);
+            let task = task_array_class.findTask(selected_task);
+            console.log(task);
+            task_array_class.removeTask(task);
+            console.log(task_array_class);
+            // console.log(task_array_class);
+            // console.log(task_array_class.tasks);
+            // displayTasks(task_array_class.tasks);
         })
     })
 }

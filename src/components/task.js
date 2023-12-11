@@ -29,6 +29,10 @@ class TaskHandler { //An array containing all of the tasks and associated method
     }
 
     removeTask(task) {
+        //Otherwise, splice would just treat undefined as  0 and remove the first task from array
+        if (task == undefined) {
+            return "Task not found";
+        }
         this.tasks.splice(this.tasks.indexOf(task), 1);
     }
 }
