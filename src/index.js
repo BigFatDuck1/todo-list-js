@@ -2,7 +2,7 @@ import './styles.css';
 
 import { TaskHandler, Task } from './components/task.js';
 import * as tasksDOM from './DOM/tasksDOM.js';
-import {modalOpen, keyModalOpen, closeOnOutsideClick, collectFieldsData} from './DOM/modal.js';
+import {modalOpen, keyModalOpen, closeOnOutsideClick, collectFieldsData, tagSubmit} from './DOM/modal.js';
 
 const Task1 = new Task("Task 1", "This is a task", "2021-10-10", "High");
 const Task2 = new Task("Task 2", "This is task 2", "2023-9-12", "High");
@@ -32,7 +32,7 @@ const modal_window = document.querySelector("#add_task_modal");
 
 function modalFunctions() {
     modalOpen(add_task_button, modal_window);
-    keyModalOpen(modal_window);
+    // keyModalOpen(modal_window);
     closeOnOutsideClick(modal_window);
 }
 modalFunctions();
@@ -52,7 +52,28 @@ submit_button.addEventListener(("click"), () => {
 
 })
 document.addEventListener("keydown", (event) => {
-    if (event.key == "Enter") {
-        submit();
+    if (document.querySelector("#add_task_modal").open == true) {
+        if (event.key == "Enter") {
+            submit();
+        }
     }
 })
+
+// Tags modal
+const add_tag_button = document.querySelector("#add_tag_button");
+const tags_modal = document.querySelector("#tags_modal");
+
+function tagModalFunctions() {
+    modalOpen(add_tag_button, tags_modal);
+    closeOnOutsideClick(tags_modal);
+}
+tagModalFunctions();
+
+tags_modal.addEventListener("keydown", ((event) => {
+    if (tags_modal.open == true) {
+        if (event.key == "Enter") {
+            let tag_field = tagSubmit(document.querySelector("#tag_input"));
+            console.log(tag_field);
+        }
+    }
+}))

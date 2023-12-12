@@ -73,4 +73,11 @@ function clearFields(...fields) {
     })
 }
 
-export {modalOpen, keyModalOpen, closeOnOutsideClick, submitForm, clearFields, collectFieldsData};
+function tagSubmit(tag_field) {
+    let tag = tag_field.value;
+    //Clears field
+    tag_field.value = "";
+    return tag;
+}
+
+export {modalOpen, keyModalOpen, closeOnOutsideClick, submitForm, clearFields, collectFieldsData, tagSubmit};
