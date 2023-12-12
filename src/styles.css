@@ -7,6 +7,11 @@
     font-family: "Cabin", sans-serif;
 }
 
+:root {
+    --primary: black;
+    --hover-links: grey;
+}
+
 /* HTML Frame */
 .container {
     display: flex;
@@ -24,6 +29,68 @@
 .main {
     display: grid;
     grid-template-columns: 1fr 4fr;    
+}
+
+/* Sidebar */
+.sidebar {
+    padding-left: 0.5rem;
+}
+
+/* Priority sidebar */
+.priority {
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.priority > a {
+    text-decoration: none;
+    color: var(--primary);
+}
+.priority > a:hover {
+    color: var(--hover-links);
+}
+
+/* Tags sidebar */
+.tags {
+    padding-top: 1rem;
+}
+
+.tag_header {
+    display: flex;
+    flex-direction: row;
+    gap: 0.3rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#add_tag_button {
+    font-size: 2rem;
+    border: none;
+    background-color: transparent;
+    transition: transform 0.2s ease-in-out;
+}
+#add_tag_button:hover {
+    color: var(--hover-links);
+    transform: scale(1.5);
+}
+#add_tag_button:active {
+    transform: scale(0.9);
+}
+
+.tags {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.tags > a {
+    text-decoration: none;
+    color: var(--primary);
+}
+.tags > a:hover {
+    color: var(--hover-links);
 }
 
 /* Tasks */
