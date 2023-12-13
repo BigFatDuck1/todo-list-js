@@ -4,10 +4,10 @@ import { TaskHandler, Task } from './components/task.js';
 import * as tasksDOM from './DOM/tasksDOM.js';
 import {modalOpen, keyModalOpen, closeOnOutsideClick, collectFieldsData, tagSubmit} from './DOM/modal.js';
 
-const Task1 = new Task("Task 1", "This is a task", "2021-10-10", "High");
-const Task2 = new Task("Task 2", "This is task 2", "2023-9-12", "High");
-const Task3 = new Task("Task 3", "This is task 3", "2021-10-10", "High");
-const Task4 = new Task("Task 4", "This is task 4", "2021-10-10", "High");
+const Task1 = new Task("Task 1", "This is a task", "2021-10-10", "Urgent and Important");
+const Task2 = new Task("Task 2", "This is task 2", "2023-9-12", "Urgent and Important");
+const Task3 = new Task("Task 3", "This is task 3", "2021-10-10", "Urgent, and Important");
+const Task4 = new Task("Task 4", "This is task 4", "2021-10-10", "Not Urgent, not Important");
 
 const allTasks = new TaskHandler();
 
@@ -41,13 +41,23 @@ modalFunctions();
 const submit_button = document.querySelector("#submit_button");
 
 function submit() {
+    if (document.querySelector("#task_name").value == "" || document.querySelector("#task_description").value == "") {
+        return "Please fill in all fields";
+    }
     let value_array = collectFieldsData(".modal_field");
     let new_task = new Task(...value_array);
     allTasks.addTask(new_task);
-    console.log(allTasks);
+    //TODO: add a check that only displays the task added if it matches the tag
+    // console.log(allTasks.tasks[allTasks.tasks.length - 1])
+    while (document.querySelector(".content").firstChild) {
+        document.querySelector(".content").removeChild(document.querySelector(".content").firstChild);
+    }
+    document.querySelector(".content").appendChild(tasksDOM.displayTasks(allTasks.tasks));
+    document.querySelector("#add_task_modal").close();
 }
 
-submit_button.addEventListener(("click"), () => {
+submit_button.addEventListener(("click"), (event) => {
+    event.preventDefault();
     submit();
 
 })

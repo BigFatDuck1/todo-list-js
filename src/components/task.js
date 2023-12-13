@@ -47,7 +47,7 @@ class Task { //An individual task
         this.complete = false;
     }
 
-    setCategory(tag) {
+    addTags(tag) {
         this.tags.push(tag);
     }
 
