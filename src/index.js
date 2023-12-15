@@ -79,11 +79,24 @@ function tagModalFunctions() {
 }
 tagModalFunctions();
 
+function tagSubmitButton() {
+    let tag_field = tagSubmit(document.querySelector("#tag_input"));
+    console.log(tag_field);
+    if (tag_field != false) {
+        // allTasks.tags.addTag(tag_field);
+        tags_modal.close();
+    }
+}
+
 tags_modal.addEventListener("keydown", ((event) => {
     if (tags_modal.open == true) {
         if (event.key == "Enter") {
-            let tag_field = tagSubmit(document.querySelector("#tag_input"));
-            console.log(tag_field);
+            event.preventDefault();
+            tagSubmitButton();
         }
     }
 }))
+document.querySelector("#tag_submit_button").addEventListener("click", (event) => {
+    event.preventDefault();
+    tagSubmitButton();
+})

@@ -75,6 +75,10 @@ function clearFields(...fields) {
 
 function tagSubmit(tag_field) {
     let tag = tag_field.value;
+    if (tag == "") {
+        console.log("Error: Empty tag");
+        return false;
+    }
     //Clears field
     tag_field.value = "";
     return tag;
