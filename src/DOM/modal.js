@@ -69,7 +69,9 @@ function collectFieldsData(class_name) {
 function clearFields(...fields) {
     //fields is the array tcontaining all fields to be cleared
     fields.forEach((field) => {
-        field.value = "";
+        if (field.type != "radio") {
+            field.value = "";
+        }
     })
 }
 

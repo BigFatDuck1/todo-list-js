@@ -4,6 +4,7 @@ import { TaskHandler, Task } from './components/task.js';
 import * as tasksDOM from './DOM/tasksDOM.js';
 import {modalOpen, keyModalOpen, closeOnOutsideClick, collectFieldsData, tagSubmit} from './DOM/modal.js';
 import { Tags } from './components/tags.js';
+import { priorityFilter } from './components/priority.js';
 
 const Task1 = new Task("Task 1", "This is a task", "2021-10-10", "Urgent and Important");
 const Task2 = new Task("Task 2", "This is task 2", "2023-9-12", "Urgent and Important");
@@ -122,3 +123,6 @@ document.querySelector("#tag_submit_button").addEventListener("click", (event) =
     event.preventDefault();
     tagSubmitButton();
 })
+
+// Filter priority
+priorityFilter(".priority_links", allTasks.tasks);
