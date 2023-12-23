@@ -98,6 +98,11 @@
     color: var(--hover-links);
 }
 
+a.tag_link {
+    display: grid;
+    grid-template-columns: 12ch 1rem;
+}
+
 /* Tasks */
 .all_tasks_container {
     display: flex;
