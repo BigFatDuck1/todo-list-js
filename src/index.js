@@ -26,8 +26,11 @@ allTasks.addTask(Task3);
 allTasks.addTask(Task4);
 allTasks.addTask(Task5);
 
-// debug purposes
-// allTasks.removeTask(Task2); 
+//Tags
+allTags.tags.forEach((tag) => {
+    let new_tag = renderTag(tag, allTags);
+    document.querySelector(".tags").appendChild(new_tag);
+})
 
 //DOM
 let div_of_all_tasks = tasksDOM.displayTasks(allTasks.tasks);
@@ -96,7 +99,7 @@ function tagSubmitButton() {
         // Add this tag into the tags array
         allTags.addTag(tag_field);
         // Rerender tags panel
-        let new_tag = renderTag(tag_field);
+        let new_tag = renderTag(tag_field, allTags);
         document.querySelector(".tags").appendChild(new_tag);
         // Debug
         console.log(allTags);

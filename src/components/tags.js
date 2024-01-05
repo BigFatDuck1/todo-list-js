@@ -21,7 +21,7 @@ class Tags {
     }
 }
 
-function renderTag(tag_field) {
+function renderTag(tag_field, tag_array_class) {
     let new_tag = document.createElement("a");
     new_tag.dataset.tag = tag_field;
     new_tag.classList.add("tag_link");
@@ -32,7 +32,7 @@ function renderTag(tag_field) {
     delete_button.textContent = "X";
     delete_button.addEventListener("click", (event) => {
         let tag_to_remove = event.target.parentElement.dataset.tag;
-        allTags.removeTag(tag_to_remove);
+        tag_array_class.removeTag(tag_to_remove);
         event.target.parentElement.remove();
     })
     new_tag.appendChild(delete_button);
