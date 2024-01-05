@@ -3,7 +3,7 @@ import './styles.css';
 import { TaskHandler, Task } from './components/task.js';
 import * as tasksDOM from './DOM/tasksDOM.js';
 import {modalOpen, keyModalOpen, closeOnOutsideClick, collectFieldsData, tagSubmit} from './DOM/modal.js';
-import { Tags } from './components/tags.js';
+import { Tags, renderTag } from './components/tags.js';
 import { priorityFilter } from './components/priority.js';
 
 const Task1 = new Task("Task 1", "This is task 1", "2021-10-10", "Urgent and Important");
@@ -16,6 +16,9 @@ const Task5 = new Task("Task 5", "This is task 5", "2025-07-08", "Not Urgent, bu
 const allTasks = new TaskHandler();
 
 const allTags = new Tags();
+allTags.addTag("Project");
+allTags.addTag("Work");
+allTags.addTag("School");
 
 allTasks.addTask(Task1);
 allTasks.addTask(Task2);
@@ -93,20 +96,7 @@ function tagSubmitButton() {
         // Add this tag into the tags array
         allTags.addTag(tag_field);
         // Rerender tags panel
-        let new_tag = document.createElement("a");
-        new_tag.dataset.tag = tag_field;
-        new_tag.classList.add("tag_link");
-        new_tag.textContent = tag_field;
-        // Delete button next to tag
-        let delete_button = document.createElement("button");
-        delete_button.classList.add("delete_tag_button");
-        delete_button.textContent = "X";
-        delete_button.addEventListener("click", (event) => {
-            let tag_to_remove = event.target.parentElement.dataset.tag;
-            allTags.removeTag(tag_to_remove);
-            event.target.parentElement.remove();
-        })
-        new_tag.appendChild(delete_button);
+        let new_tag = renderTag(tag_field);
         document.querySelector(".tags").appendChild(new_tag);
         // Debug
         console.log(allTags);

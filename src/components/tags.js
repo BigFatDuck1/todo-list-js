@@ -21,4 +21,23 @@ class Tags {
     }
 }
 
-export { Tags };
+function renderTag(tag_field) {
+    let new_tag = document.createElement("a");
+    new_tag.dataset.tag = tag_field;
+    new_tag.classList.add("tag_link");
+    new_tag.textContent = tag_field;
+    // Delete button next to tag
+    let delete_button = document.createElement("button");
+    delete_button.classList.add("delete_tag_button");
+    delete_button.textContent = "X";
+    delete_button.addEventListener("click", (event) => {
+        let tag_to_remove = event.target.parentElement.dataset.tag;
+        allTags.removeTag(tag_to_remove);
+        event.target.parentElement.remove();
+    })
+    new_tag.appendChild(delete_button);
+
+    return new_tag;
+}
+
+export { Tags, renderTag };
