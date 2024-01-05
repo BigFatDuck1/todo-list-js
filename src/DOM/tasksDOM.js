@@ -29,9 +29,16 @@ function displayTasks(task_array) {
 
         let task_tags = document.createElement('p');
         task_tags.classList.add('tags');
+        let i = 0; //This counter is for counting whether it is the last tag, if yes, don't append the comma
         task.tags.forEach((tag) => {
-            task_tags.textContent += tag + " ";
-        })
+            if (i < task.tags.length - 1) {
+            task_tags.textContent += tag + ", ";
+            i++;
+            }
+            else {
+                task_tags.textContent += tag;
+            }
+        }) 
 
         let task_complete_button = document.createElement('button');
         task_complete_button.classList.add('complete_button');

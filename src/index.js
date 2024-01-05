@@ -6,11 +6,11 @@ import {modalOpen, keyModalOpen, closeOnOutsideClick, collectFieldsData, tagSubm
 import { Tags, renderTag } from './components/tags.js';
 import { priorityFilter } from './components/priority.js';
 
-const Task1 = new Task("Task 1", "This is task 1", "2021-10-10", "Urgent and Important");
-const Task2 = new Task("Task 2", "This is task 2", "2023-9-12", "Urgent and Important");
-const Task3 = new Task("Task 3", "This is task 3", "2022-10-01", "Urgent but Not Important");
-const Task4 = new Task("Task 4", "This is task 4", "2024-12-10", "Not Urgent, Not Important");
-const Task5 = new Task("Task 5", "This is task 5", "2025-07-08", "Not Urgent, but Important");
+const Task1 = new Task("Task 1", "This is task 1", "2021-10-10", "Urgent and Important", ["Project", "Work"]);
+const Task2 = new Task("Task 2", "This is task 2", "2023-9-12", "Urgent and Important", ["Project", "School"]);
+const Task3 = new Task("Task 3", "This is task 3", "2022-10-01", "Urgent but Not Important", ["Work", "School"]);
+const Task4 = new Task("Task 4", "This is task 4", "2024-12-10", "Not Urgent, Not Important", ["Project"]);
+const Task5 = new Task("Task 5", "This is task 5", "2025-07-08", "Not Urgent, but Important", ["Work", "School"]);
 
 
 const allTasks = new TaskHandler();
@@ -95,7 +95,15 @@ tagModalFunctions();
 
 function tagSubmitButton() {
     let tag_field = tagSubmit(document.querySelector("#tag_input"));
-    if (tag_field != false) {
+    if (tag_field != false) { //if tag isn't empty
+        if (allTags.checkDuplicate(tag_field) == true) {
+            console.log("Tag already exists");
+            document.querySelector("#tag_input").classList.add("tag_duplicate");
+            setTimeout(() => { //Removes error class after 1 second
+                document.querySelector("#tag_input").classList.remove("tag_duplicate");
+            }, 1000)
+            return "Tag already exists";
+        }
         // Add this tag into the tags array
         allTags.addTag(tag_field);
         // Rerender tags panel

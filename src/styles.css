@@ -12,6 +12,10 @@
     --hover-links: grey;
 }
 
+button {
+    cursor: pointer;
+}
+
 /* HTML Frame */
 .container {
     display: flex;
@@ -101,6 +105,13 @@
 a.tag_link {
     display: grid;
     grid-template-columns: 12ch 1rem;
+    cursor: pointer;
+}
+
+/* Tags modal */
+.tag_duplicate {
+    /* If there is a pre-existing tag with same name, turn box red */
+    border: 1px solid red;
 }
 
 /* Tasks */

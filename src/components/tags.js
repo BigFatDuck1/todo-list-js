@@ -19,6 +19,12 @@ class Tags {
 
         this.tags.splice(this.tags.indexOf(tag), 1);
     }
+
+    checkDuplicate(tag) {
+        return this.tags.includes(tag);
+        //If true, duplicate exists
+        //If false, duplicate does not exist, can create new tag
+    }
 }
 
 function renderTag(tag_field, tag_array_class) {

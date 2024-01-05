@@ -38,12 +38,12 @@ class TaskHandler { //An array containing all of the tasks and associated method
 }
 
 class Task { //An individual task
-    constructor(name, description, date, priority) {
+    constructor(name, description, date, priority, tags) {
         this.name = name;
         this.description = description;
         this.date = date;
         this.priority = priority;
-        this.tags = [];
+        this.tags = tags; //Provide an array
         this.complete = false;
     }
 
