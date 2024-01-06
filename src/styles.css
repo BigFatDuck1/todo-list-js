@@ -108,6 +108,10 @@ a.tag_link {
     cursor: pointer;
 }
 
+.unfiltered {
+    font-style: italic;
+}
+
 /* Tags modal */
 .tag_duplicate {
     /* If there is a pre-existing tag with same name, turn box red */

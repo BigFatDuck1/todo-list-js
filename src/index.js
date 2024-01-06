@@ -40,6 +40,12 @@ document.querySelector(".content").appendChild(div_of_all_tasks);
 tasksDOM.deleteButtons(allTasks);
 tasksDOM.checkButtons(allTasks);
 
+//Tags sidebar
+document.querySelector("#unfiltered").addEventListener("click", () => {
+    let new_divs_from_tasks = tasksDOM.displayTasks(allTasks.tasks);
+    document.querySelector(".all_tasks_container").replaceWith(new_divs_from_tasks);
+})
+
 //Modal
 const add_task_button = document.querySelector(".add_button");
 const modal_window = document.querySelector("#add_task_modal");
