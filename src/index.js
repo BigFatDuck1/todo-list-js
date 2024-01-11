@@ -3,7 +3,7 @@ import './styles.css';
 import { TaskHandler, Task } from './components/task.js';
 import * as tasksDOM from './DOM/tasksDOM.js';
 import {modalOpen, keyModalOpen, closeOnOutsideClick, collectFieldsData, tagSubmit} from './DOM/modal.js';
-import { Tags, renderTag } from './components/tags.js';
+import { Tags, renderTag, filterTasksByTag } from './components/tags.js';
 import { priorityFilter } from './components/priority.js';
 
 const Task1 = new Task("Task 1", "This is task 1", "2021-10-10", "Urgent and Important", ["Project", "Work"]);
@@ -11,7 +11,6 @@ const Task2 = new Task("Task 2", "This is task 2", "2023-9-12", "Urgent and Impo
 const Task3 = new Task("Task 3", "This is task 3", "2022-10-01", "Urgent but Not Important", ["Work", "School"]);
 const Task4 = new Task("Task 4", "This is task 4", "2024-12-10", "Not Urgent, Not Important", ["Project"]);
 const Task5 = new Task("Task 5", "This is task 5", "2025-07-08", "Not Urgent, but Important", ["Work", "School"]);
-
 
 const allTasks = new TaskHandler();
 
@@ -31,6 +30,9 @@ allTags.tags.forEach((tag) => {
     let new_tag = renderTag(tag, allTags);
     document.querySelector(".tags").appendChild(new_tag);
 })
+
+//TODO: 
+filterTasksByTag(".tag_link", allTasks.tasks);
 
 //DOM
 let div_of_all_tasks = tasksDOM.displayTasks(allTasks.tasks);

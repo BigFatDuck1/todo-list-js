@@ -25,6 +25,7 @@ class Tags {
         //If true, duplicate exists
         //If false, duplicate does not exist, can create new tag
     }
+
 }
 
 function renderTag(tag_field, tag_array_class) {
@@ -46,4 +47,16 @@ function renderTag(tag_field, tag_array_class) {
     return new_tag;
 }
 
-export { Tags, renderTag };
+//Call this function on startup and whenever a new tag is added (after tag submit in modal)
+function filterTasksByTag(tag_links, tasks_array) {
+    console.log(tag_links)
+    document.querySelectorAll(tag_links).forEach((link) => {
+        link.addEventListener("click", (event) => {
+            console.log("click");
+            event.preventDefault();
+            console.log(event);
+        })
+    })
+}
+
+export { Tags, renderTag, filterTasksByTag };
