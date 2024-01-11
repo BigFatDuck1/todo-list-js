@@ -49,6 +49,12 @@ document.querySelector("#unfiltered").addEventListener("click", (event) => {
     document.querySelector(".all_tasks_container").replaceWith(new_divs_from_tasks);
 })
 
+//Reattach event listeners to new buttons after re-rendering
+document.querySelector(".sidebar").addEventListener("click", () => {
+    tasksDOM.deleteButtons(allTasks);
+    tasksDOM.checkButtons(allTasks);
+})
+
 //Modal
 const add_task_button = document.querySelector(".add_button");
 const modal_window = document.querySelector("#add_task_modal");
