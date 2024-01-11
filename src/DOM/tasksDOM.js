@@ -8,6 +8,13 @@ function displayTasks(task_array) {
         //Create a div for each task
         let task_div = document.createElement('div');
         task_div.classList.add('task_container');
+        //Check if complete or not
+        if (task.complete == true) {
+            task_div.classList.add('task_finished');
+        }
+        else {
+            task_div.classList.remove('task_finished');
+        }
         task_div.dataset.name = task.name;
 
         //Fill in details
@@ -101,15 +108,11 @@ function checkButtons(task_array_class) {
                 //Add class that modifies style of button
                 parent_element.classList.add("task_finished");
                 result.setCompleted();
-                result.tags.push("completed");
             }
             else if (result.complete == true) {
                 //Removes that class to mark that it is not complete
                 parent_element.classList.remove("task_finished");
                 result.setIncomplete();
-                result.tags.splice((() => {
-                    return result.tags.indexOf("completed");
-                }), 1);
             }            
             console.log(button.parentElement);
         })
