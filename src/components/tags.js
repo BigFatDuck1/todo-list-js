@@ -1,3 +1,4 @@
+import * as tasksDOM from '../DOM/tasksDOM.js';
 
 class Tags {
     constructor() {
@@ -49,14 +50,37 @@ function renderTag(tag_field, tag_array_class) {
 
 //Call this function on startup and whenever a new tag is added (after tag submit in modal)
 function filterTasksByTag(tag_links, tasks_array) {
-    console.log(tag_links)
     document.querySelectorAll(tag_links).forEach((link) => {
-        link.addEventListener("click", (event) => {
-            console.log("click");
+        link.addEventListener("click", function (event) {
             event.preventDefault();
-            console.log(event);
+
+            let selected_tag = this.dataset.tag; //Clicking on "projects" tag link returns string "projects"
+
+            let filtered_array = newArrayFitsCriteria(tasks_array, selected_tag);
+            console.log(tasks_array);
+            console.log(filtered_array);
+            reRender(filtered_array);
+
+            return filtered_array;
+
         })
     })
+}
+
+function reRender(array) {
+    let new_divs_from_tasks = tasksDOM.displayTasks(array);
+    document.querySelector(".all_tasks_container").replaceWith(new_divs_from_tasks);
+}
+
+//Basically a filter function 
+function newArrayFitsCriteria(array, tag) {
+    let new_array = [];
+    array.forEach((element) => {
+        if (element.tags.includes(tag)) {
+            new_array.push(element);
+        }
+    })
+    return new_array;
 }
 
 export { Tags, renderTag, filterTasksByTag };

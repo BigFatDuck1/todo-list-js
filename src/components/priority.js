@@ -14,7 +14,6 @@ function priorityFilter(links, all_tasks_array) {
             //Don't modify original array
             let filtered_array = newArrayFitsCriteria(all_tasks_array, priority);
             console.log(filtered_array);
-            console.log(all_tasks_array);
             reRender(filtered_array);
 
             return filtered_array;

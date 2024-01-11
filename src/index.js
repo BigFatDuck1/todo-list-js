@@ -43,7 +43,8 @@ tasksDOM.deleteButtons(allTasks);
 tasksDOM.checkButtons(allTasks);
 
 //Tags sidebar
-document.querySelector("#unfiltered").addEventListener("click", () => {
+document.querySelector("#unfiltered").addEventListener("click", (event) => {
+    event.preventDefault();
     let new_divs_from_tasks = tasksDOM.displayTasks(allTasks.tasks);
     document.querySelector(".all_tasks_container").replaceWith(new_divs_from_tasks);
 })
