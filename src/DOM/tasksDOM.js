@@ -188,7 +188,7 @@ function editButtons(task_array_class) {
                 task_array_class.editTask(result, edits_array);
                 //Closes modal
                 document.querySelector("#edit_task_modal").close();
-                //TODO: rerender task
+                //Rerender all tasks
                 let param = task_array_class["tasks"];
                 console.log(param);
                 let new_divs_from_tasks = displayTasks(param);
