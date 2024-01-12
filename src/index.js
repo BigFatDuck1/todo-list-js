@@ -74,7 +74,8 @@ closeOnOutsideClick(document.querySelector("#edit_task_modal"));
 const submit_button = document.querySelector("#submit_button");
 
 function submit() {
-    if (document.querySelector("#task_name").value == "" || document.querySelector("#task_description").value == "") {
+    if (document.querySelector("#task_name").value == "" || document.querySelector("#task_description").value == "" || document.querySelector("#task_due_date").value == "") {
+        console.log("Incomplete fields");
         return "Please fill in all fields";
     }
     let value_array = collectFieldsData(".modal_field");
@@ -97,6 +98,7 @@ submit_button.addEventListener(("click"), (event) => {
 document.addEventListener("keydown", (event) => {
     if (document.querySelector("#add_task_modal").open == true) {
         if (event.key == "Enter") {
+            event.preventDefault();
             submit();
         }
     }

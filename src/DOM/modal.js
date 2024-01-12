@@ -54,20 +54,25 @@ function collectFieldsData(class_name) {
                 value_array.push(field.value);
             }
         }
+        //Handles tags
+        else if (field.name == "tags") {
+            let tags_array = field.value.split(",");
+            value_array.push(tags_array);
+        }
         //Handles everything else
-        else if (field.value != "radio") {
+        else if (field.type != "radio") {
             value_array.push(field.value);
         }
     })
 
     //Clears everything after pressing submit
     clearFields(...fields);
-
+    
     return value_array;
 }
 
 function clearFields(...fields) {
-    //fields is the array tcontaining all fields to be cleared
+    //fields is the array containing all fields to be cleared
     fields.forEach((field) => {
         if (field.type != "radio") {
             field.value = "";

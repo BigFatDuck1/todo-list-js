@@ -139,6 +139,7 @@ function editButtons(task_array_class) {
             document.querySelector("#edit_task_name").value = result.name;
             document.querySelector("#edit_task_description").value = result.description;
             document.querySelector("#edit_task_due_date").value = result.date;
+            document.querySelector("#edit_tags").value = result.tags;
             //TODO: switch statement for radio buttons
 
             //Submit button
@@ -146,13 +147,14 @@ function editButtons(task_array_class) {
                 event.preventDefault();
                 //TODO: check radio button
                 let edited_priority = "Urgent and Important"; //Just a default value for debugging purposes
-                //TODO: tags handling
+                //Tags handling
                 let edited_tags = [];
                 if (document.querySelector("#edit_tags").value == "") {
-                    edited_tags = [];
+                    edited_tags = []; //Unchanged
                 }
                 else {
-                    edited_tags.push();
+                    let tags_array = document.querySelector("#edit_tags").value.split(",");
+                    edited_tags = tags_array;
                 }
 
                 //Collects data from fields
