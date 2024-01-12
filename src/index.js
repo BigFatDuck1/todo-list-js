@@ -31,7 +31,6 @@ allTags.tags.forEach((tag) => {
     document.querySelector(".tags").appendChild(new_tag);
 })
 
-//TODO: 
 filterTasksByTag(".tag_link", allTasks.tasks);
 
 //DOM

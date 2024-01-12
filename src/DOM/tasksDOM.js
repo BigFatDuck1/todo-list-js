@@ -140,13 +140,32 @@ function editButtons(task_array_class) {
             document.querySelector("#edit_task_description").value = result.description;
             document.querySelector("#edit_task_due_date").value = result.date;
             document.querySelector("#edit_tags").value = result.tags;
-            //TODO: switch statement for radio buttons
+            //witch statement to prefill radio buttons
+            switch (result.priority) {
+                case "Urgent and Important":
+                    document.querySelector("#edit_UandI").checked = true;
+                    break;
+                case "Urgent but Not Important":
+                    document.querySelector("#edit_UnotI").checked = true;
+                    break;
+                case "Not Urgent, but Important":
+                    document.querySelector("#edit_notUI").checked = true;
+                    break;
+                case "Not Urgent, Not Important":
+                    document.querySelector("#edit_nUnI").checked = true;
+                    break;
+            }
 
             //Submit button
             document.querySelector("#edit_modal_submit_button").addEventListener("click", (event) => {
                 event.preventDefault();
-                //TODO: check radio button
+                //Check radio button
                 let edited_priority = "Urgent and Important"; //Just a default value for debugging purposes
+                [...document.querySelectorAll('input[name="edit_priority"]')].forEach((radio) => {
+                    if (radio.checked) {
+                        edited_priority = radio.value;
+                    }
+                })
                 //Tags handling
                 let edited_tags = [];
                 if (document.querySelector("#edit_tags").value == "") {
