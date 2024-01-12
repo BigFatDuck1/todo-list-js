@@ -1,3 +1,4 @@
+import { modalOpen } from "./modal";
 
 function displayTasks(task_array) {
 
@@ -55,12 +56,16 @@ function displayTasks(task_array) {
         task_delete_button.classList.add('delete_button');
         task_delete_button.textContent = "X";
 
-        [task_complete_button, task_delete_button].forEach((button) => {
+        let task_edit_button = document.createElement('button');
+        task_edit_button.classList.add('edit_button');
+        task_edit_button.textContent = "✏️";
+
+        [task_complete_button, task_delete_button, task_edit_button].forEach((button) => {
             button.classList.add('task_buttons');
         })
 
         //Append all details into the div
-        let task_info = [task_name, task_description, task_date, task_priority, task_tags, task_complete_button, task_delete_button];
+        let task_info = [task_name, task_description, task_date, task_priority, task_tags, task_complete_button, task_delete_button, task_edit_button];
         task_info.forEach((element) => {
             task_div.appendChild(element);
         })
@@ -119,4 +124,23 @@ function checkButtons(task_array_class) {
     })
 }
 
-export { displayTasks, deleteButtons, checkButtons };
+function editButtons(task_array_class) {
+    let all_edit_buttons = document.querySelectorAll(".edit_button");
+
+    all_edit_buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+            let selected_task_name = button.parentElement.dataset.name; //Stores the task that the button belongs to
+            let result = task_array_class.findTask(selected_task_name); //Result in the actual task itself (the object)
+            console.log(result);
+
+            //Opens modal
+            document.querySelector("#edit_task_modal").showModal();
+            //Pre-fills the modal with the selected task's details
+            document.querySelector("#edit_task_name").value = result.name;
+            document.querySelector("#edit_task_description").value = result.description;
+            document.querySelector("#edit_task_date").value = result.date;
+        })
+    })
+}
+
+export { displayTasks, deleteButtons, checkButtons, editButtons };

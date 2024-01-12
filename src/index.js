@@ -41,6 +41,7 @@ document.querySelector(".content").appendChild(div_of_all_tasks);
 //Tasks
 tasksDOM.deleteButtons(allTasks);
 tasksDOM.checkButtons(allTasks);
+tasksDOM.editButtons(allTasks);
 
 //Tags sidebar
 document.querySelector("#unfiltered").addEventListener("click", (event) => {
@@ -53,6 +54,7 @@ document.querySelector("#unfiltered").addEventListener("click", (event) => {
 document.querySelector(".sidebar").addEventListener("click", () => {
     tasksDOM.deleteButtons(allTasks);
     tasksDOM.checkButtons(allTasks);
+    tasksDOM.editButtons(allTasks);
 })
 
 //Modal
@@ -65,6 +67,8 @@ function modalFunctions() {
     closeOnOutsideClick(modal_window);
 }
 modalFunctions();
+//Also closes edit task modal on outside click
+closeOnOutsideClick(document.querySelector("#edit_task_modal"));
 
 //Modal submit
 const submit_button = document.querySelector("#submit_button");

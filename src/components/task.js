@@ -35,6 +35,14 @@ class TaskHandler { //An array containing all of the tasks and associated method
         }
         this.tasks.splice(this.tasks.indexOf(task), 1);
     }
+
+    editTask(task, array_of_edited_fields) {
+        //for task parameter, pass in allTasks.findTask(task_name)
+        //array_of_edited_fields is an array of strings
+        //e.g. ["Task 6", "description", "2001-01-01", "Urgent and Important", ["tag1", "tag2"]]
+        [task.name, task.description, task.date, task.priority, task.tags] = array_of_edited_fields;
+        return task;
+    }
 }
 
 class Task { //An individual task

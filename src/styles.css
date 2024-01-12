@@ -129,12 +129,14 @@ a.tag_link, .unfiltered {
 .task_container {
     display: grid;
     grid-template-areas: 
-    "name name name name name name"
-    "description description description description . ."
-    "date date date date completed delete"
-    "priority priority priority priority completed delete"
-    "tags tags tags tags tags tags";
+    "name name name name name name name"
+    "description description description description . . ."
+    "date date date date edit completed delete"
+    "priority priority priority priority edit completed delete"
+    "tags tags tags tags tags tags tags";
     gap: 0.5rem;
+
+    grid-template-columns: repeat(4, 1fr) 5ch 5ch 5ch;
 }
 
 .name {
@@ -144,6 +146,7 @@ a.tag_link, .unfiltered {
 
 .description {
     grid-area: description;
+    font-style: italic;
 }
 
 .date {
@@ -152,6 +155,8 @@ a.tag_link, .unfiltered {
 
 .priority {
     grid-area: priority;
+    opacity: 0.8;
+    font-size: 0.95rem;
 }
 
 .task_buttons {
@@ -167,8 +172,13 @@ a.tag_link, .unfiltered {
     grid-area: delete;
 }
 
+.edit_button {
+    grid-area: edit;
+}
+
 .tags {
     grid-area: tags;
+    font-size: 0.9rem;
 }
 
 /* Task complete */
@@ -200,5 +210,27 @@ dialog > form {
 .priority_radio {
     display: flex;
     flex-direction: column;
+    gap: 0.5rem;
+}
+
+.modal_field {
+    border: none;
+    border-bottom: 1px solid grey;
+}
+.modal_field:focus {
+    outline: none;
+}
+
+.tags_field {
+    border: 1px solid lightgray;
+    width: 30ch;
+}
+.tags_field:focus {
+    outline: 1px solid black;
+    border-radius: 0.3rem;
+}
+
+.tags_input_box {
+    display: flex;
     gap: 0.5rem;
 }
