@@ -138,7 +138,46 @@ function editButtons(task_array_class) {
             //Pre-fills the modal with the selected task's details
             document.querySelector("#edit_task_name").value = result.name;
             document.querySelector("#edit_task_description").value = result.description;
-            document.querySelector("#edit_task_date").value = result.date;
+            document.querySelector("#edit_task_due_date").value = result.date;
+            //TODO: switch statement for radio buttons
+
+            //Submit button
+            document.querySelector("#edit_modal_submit_button").addEventListener("click", (event) => {
+                event.preventDefault();
+                //TODO: check radio button
+                let edited_priority = "Urgent and Important"; //Just a default value for debugging purposes
+                //TODO: tags handling
+                let edited_tags = [];
+                if (document.querySelector("#edit_tags").value == "") {
+                    edited_tags = [];
+                }
+                else {
+                    edited_tags.push();
+                }
+
+                //Collects data from fields
+                let edits_array = [
+                    document.querySelector("#edit_task_name").value, 
+                    document.querySelector("#edit_task_description").value, 
+                    document.querySelector("#edit_task_due_date").value, 
+                    edited_priority,
+                    edited_tags
+                ];
+                //Calls editTask function
+                task_array_class.editTask(result, edits_array);
+                //Closes modal
+                document.querySelector("#edit_task_modal").close();
+                //TODO: rerender task
+                let param = task_array_class["tasks"];
+                console.log(param);
+                let new_divs_from_tasks = displayTasks(param);
+                document.querySelector(".all_tasks_container").replaceWith(new_divs_from_tasks);
+                //Reattach event listeners to new buttons after re-rendering
+                deleteButtons(task_array_class);
+                checkButtons(task_array_class);
+                editButtons(task_array_class);
+
+            })
         })
     })
 }
