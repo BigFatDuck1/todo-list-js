@@ -151,3 +151,21 @@ document.querySelector("#tag_submit_button").addEventListener("click", (event) =
 
 // Filter priority
 priorityFilter(".priority_links", allTasks.tasks);
+
+//localStorage
+let all_buttons = document.querySelectorAll("button");
+let clicks = 0;
+
+all_buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+        clicks++;
+        localStorage.setItem("Test", clicks);
+    })
+})
+
+
+//On startup
+let startup_test = localStorage.getItem("Test");
+console.log(localStorage);
+console.log(startup_test);
+localStorage.setItem("Test", 0);
