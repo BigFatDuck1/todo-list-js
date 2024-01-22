@@ -6,11 +6,11 @@ import {modalOpen, keyModalOpen, closeOnOutsideClick, collectFieldsData, tagSubm
 import { Tags, renderTag, filterTasksByTag } from './components/tags.js';
 import { priorityFilter } from './components/priority.js';
 
-const Task1 = new Task("Task 1", "This is task 1", "2021-10-10", "Urgent and Important", ["Project", "Work"]);
-const Task2 = new Task("Task 2", "This is task 2", "2023-09-12", "Urgent and Important", ["Project", "School"]);
-const Task3 = new Task("Task 3", "This is task 3", "2022-10-01", "Urgent but Not Important", ["Work", "School"]);
-const Task4 = new Task("Task 4", "This is task 4", "2024-12-10", "Not Urgent, Not Important", ["Project"]);
-const Task5 = new Task("Task 5", "This is task 5", "2025-07-08", "Not Urgent, but Important", ["Work", "School"]);
+// const Task1 = new Task("Task 1", "This is task 1", "2021-10-10", "Urgent and Important", ["Project", "Work"]);
+// const Task2 = new Task("Task 2", "This is task 2", "2023-09-12", "Urgent and Important", ["Project", "School"]);
+// const Task3 = new Task("Task 3", "This is task 3", "2022-10-01", "Urgent but Not Important", ["Work", "School"]);
+// const Task4 = new Task("Task 4", "This is task 4", "2024-12-10", "Not Urgent, Not Important", ["Project"]);
+// const Task5 = new Task("Task 5", "This is task 5", "2025-07-08", "Not Urgent, but Important", ["Work", "School"]);
 
 const allTasks = new TaskHandler();
 
@@ -19,11 +19,50 @@ allTags.addTag("Project");
 allTags.addTag("Work");
 allTags.addTag("School");
 
-allTasks.addTask(Task1);
-allTasks.addTask(Task2);
-allTasks.addTask(Task3);
-allTasks.addTask(Task4);
-allTasks.addTask(Task5);
+// allTasks.addTask(Task1);
+// allTasks.addTask(Task2);
+// allTasks.addTask(Task3);
+// allTasks.addTask(Task4);
+// allTasks.addTask(Task5);
+
+
+//On startup
+let tasks_array = [];
+let tags_array = [];
+function startUpLocalStorage() {
+    if (localStorage.tasks == undefined) {
+        tags_array = ["Project", "Work", "School"]; //Some default tags
+        return "Local storage cleared";
+    }
+    else {
+        tasks_array = JSON.parse(localStorage.tasks);
+        tags_array = JSON.parse(localStorage.tags);
+    }
+}
+startUpLocalStorage();
+//Returns an array of values from an object so it can be used to create a new Task class
+function arrayFromObject(object) {
+    let array = [];
+    for (let key in object) {
+        array.push(object[key]);
+    }
+
+    return array;
+}
+
+let task_class_array = [];
+tasks_array.forEach((task) => {
+    task_class_array.push(new Task(...arrayFromObject(task)));
+})
+
+let tags_class_array = [];
+tags_array.forEach((tag) => {
+    tags_class_array.push(new Tags(tag));
+})
+
+//Reassign allTasks and allTags to the saved tasks and tags
+allTasks.tasks = task_class_array;
+allTags.tags = tags_class_array;
 
 //Tags
 allTags.tags.forEach((tag) => {
@@ -50,7 +89,7 @@ document.querySelector("#unfiltered").addEventListener("click", (event) => {
 })
 
 //Reattach event listeners to new buttons after re-rendering
-document.querySelector(".sidebar").addEventListener("click", () => {
+document.addEventListener("click", () => {
     tasksDOM.deleteButtons(allTasks);
     tasksDOM.checkButtons(allTasks);
     tasksDOM.editButtons(allTasks);
@@ -154,18 +193,11 @@ priorityFilter(".priority_links", allTasks.tasks);
 
 //localStorage
 let all_buttons = document.querySelectorAll("button");
-let clicks = 0;
 
 all_buttons.forEach((button) => {
     button.addEventListener("click", () => {
-        clicks++;
-        localStorage.setItem("Test", clicks);
+        localStorage.setItem("tasks", JSON.stringify(allTasks.tasks));
+        localStorage.setItem("tags", JSON.stringify(allTags.tags));
     })
 })
 
-
-//On startup
-let startup_test = localStorage.getItem("Test");
-console.log(localStorage);
-console.log(startup_test);
-localStorage.setItem("Test", 0);
