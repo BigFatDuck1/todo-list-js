@@ -12,6 +12,12 @@ import { priorityFilter } from './components/priority.js';
 // const Task4 = new Task("Task 4", "This is task 4", "2024-12-10", "Not Urgent, Not Important", ["Project"]);
 // const Task5 = new Task("Task 5", "This is task 5", "2025-07-08", "Not Urgent, but Important", ["Work", "School"]);
 
+// allTasks.addTask(Task1);
+// allTasks.addTask(Task2);
+// allTasks.addTask(Task3);
+// allTasks.addTask(Task4);
+// allTasks.addTask(Task5);
+
 const allTasks = new TaskHandler();
 
 const allTags = new Tags();
@@ -19,11 +25,6 @@ allTags.addTag("Project");
 allTags.addTag("Work");
 allTags.addTag("School");
 
-// allTasks.addTask(Task1);
-// allTasks.addTask(Task2);
-// allTasks.addTask(Task3);
-// allTasks.addTask(Task4);
-// allTasks.addTask(Task5);
 
 
 //On startup
@@ -31,7 +32,7 @@ let tasks_array = [];
 let tags_array = [];
 function startUpLocalStorage() {
     if (localStorage.tasks == undefined) {
-        tags_array = ["Project", "Work", "School"]; //Some default tags
+        tags_array = ["Project", "Work", "School"]; //? Some default tags
         return "Local storage cleared";
     }
     else {
@@ -50,19 +51,18 @@ function arrayFromObject(object) {
     return array;
 }
 
+//Generate new task class from each task object
 let task_class_array = [];
 tasks_array.forEach((task) => {
     task_class_array.push(new Task(...arrayFromObject(task)));
 })
 
-let tags_class_array = [];
 tags_array.forEach((tag) => {
-    tags_class_array.push(new Tags(tag));
+   allTags.addTag(tag);
 })
 
 //Reassign allTasks and allTags to the saved tasks and tags
 allTasks.tasks = task_class_array;
-allTags.tags = tags_class_array;
 
 //Tags
 allTags.tags.forEach((tag) => {
